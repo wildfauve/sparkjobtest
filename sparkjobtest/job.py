@@ -1,0 +1,2 @@
+def job():
+    return True
