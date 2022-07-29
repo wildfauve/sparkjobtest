@@ -115,6 +115,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "pymonad"
+version = "2.4.0"
+description = "Data structures and utilities for monadic style functional programming."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -222,7 +230,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "43a9f30bed3c9224792e2ec66f155ba31265130bd0c792e526bea7e9679aface"
+content-hash = "2372a7af42f2a46305d98a1cc5911c157f664591e045b5ba71791e305a5696c8"
 
 [metadata.files]
 atomicwrites = []
@@ -278,6 +286,10 @@ py = [
 py4j = [
     {file = "py4j-0.10.9.2-py2.py3-none-any.whl", hash = "sha256:bf0485388e415ff26710d2dc719cb0ede16cf1164b1ee757e0ebb2e98c471521"},
     {file = "py4j-0.10.9.2.tar.gz", hash = "sha256:624f97c363b8dd84822bc666b12fa7f7d97824632b2ff3d852cc491359ce7615"},
+]
+pymonad = [
+    {file = "PyMonad-2.4.0-py3-none-any.whl", hash = "sha256:e78d9bf3b0712b165d4f43c29b0c1b23ed3ff11dbae1a6d61402cda7f0827d1a"},
+    {file = "PyMonad-2.4.0.tar.gz", hash = "sha256:6b9d98e40bf2e0f1cc1900309365f9ba4997f3432a1d6e71f80f41ace2890204"},
 ]
 pyparsing = [
     {file = "pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc"},

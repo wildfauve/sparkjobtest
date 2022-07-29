@@ -13,6 +13,7 @@ def transform(df, params, args):
               .withColumn("_libs", lit(lib_test)))
 
 def write(df):
+    df.show()
     df.write.format(sp.table_format()).mode("overwrite").saveAsTable("dataProduct_cbor.batch")
     return True
 
