@@ -1,0 +1,1 @@
+table_format = "delta"

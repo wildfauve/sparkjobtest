@@ -1,12 +1,19 @@
 [tool.poetry]
 name = "sparkjobtest"
-version = "0.1.0"
+version = "0.1.9"
 description = ""
 authors = ["Col Perks <wild.fauve@gmail.com>"]
 
+[tool.poetry.plugins."job_entry_point_group"]
+job_main = "sparkjobtest.job:job"
+
+
 [tool.poetry.dependencies]
 python = "^3.9"
-pyspark = "^3.3.0"
+pyspark = "3.2.0"
+pendulum = "^2.1.2"
+simple-memory-cache = "^1.0.0"
+delta-spark = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
