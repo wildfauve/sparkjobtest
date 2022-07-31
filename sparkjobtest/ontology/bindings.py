@@ -1,0 +1,61 @@
+from sparkjobtest.ontology.rdf_prefix import *
+
+def bind(g):
+    g.bind('', sfo)
+    g.bind('sfo-cls', sfo_cls)
+    g.bind('sfo-cls-ind-gics', sfo_cls_ind_gics)
+    g.bind('sfo-prt', sfo_prt)
+    g.bind('sfo-fi', sfo_fi)
+    g.bind('sfo-cmn', sfo_cmn)
+    g.bind('sfo-cmn-ind-cur', sfo_cmn_ind_cur)
+    g.bind('skos', skos)
+    g.bind('owl', owl)
+    g.bind('fibo-sec-sec-ast', fibo_sec_sec_ast)
+    g.bind('fibo-fbc-fi-fi', fibo_fbc_fi_fi)
+    g.bind('fibo-sec-sec-idind', fibo_sec_sec_idind)
+    g.bind('fibo-sec-sec-id', fibo_sec_sec_id)
+    g.bind('fibo-fbc-pas-fpas', fibo_fbc_pas_fpas)
+    g.bind('fibo-fnd-arr-cls', fibo_fnd_arr_cls)
+    g.bind('fibo-sec-sec-iss', fibo_sec_sec_iss)
+    g.bind('fibo-sec-eq-eq', fibo_sec_eq_eq)
+    g.bind('fibo-fnd-org-fm', fibo_fnd_org_fm)
+    g.bind('fibo-fnd-rel-rel', fibo_fnd_rel_rel)
+    g.bind('fibo-fnd-acc-cur', fibo_fnd_acc_cur)
+    g.bind('fibo-fnd-dt-fd', fibo_fnd_dt_fd)
+    g.bind('fibo-fi-ip', fibo_fi_ip)
+    g.bind('fibo-fnd-acc-4217', fibo_fnd_acc_4217)
+    g.bind('fibo-sec-sec-ast', fibo_sec_sec_ast)
+    g.bind('fibo-fnd-arr-rt', fibo_fnd_arr_rt)
+    g.bind('fibo-fnd-oac-own', fibo_fnd_oac_own)
+    g.bind('fibo-be-fct-pub', fibo_be_fct_pub)
+    g.bind('fibo-sec-fund-civ', fibo_sec_fund_civ)
+    g.bind('fibo-fnd-arr-arr', fibo_fnd_arr_arr)
+    g.bind('lcc-3166-1', lcc_3166_1)
+    g.bind('lcc-cr', lcc_cr)
+    g.bind('lcc-lr', lcc_lr)
+    return g
+
+
+def custodian_ld_context():
+    return {"@vocab": "https://api.nzsuperfund.co.nz/custodian/",
+            "@language": "en",
+            "skos": "http://www.w3.org/2004/02/skos/core#",
+            "fibo-fbc-fi-fi": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/",
+            "fibo-fbc-pas-fpas": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/",
+            "fibo-fi-ip": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/",
+            "fibo-fnd-acc-4217": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/",
+            "fibo-fnd-acc-cur": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/",
+            "fibo-fnd-arr-arr": "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/",
+            "fibo-fnd-arr-rt": "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/",
+            "fibo-fnd-dt-fd": "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/",
+            "fibo-fnd-oac-own": "https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/",
+            "fibo-fnd-org-fm": "https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/",
+            "fibo-fnd-rel-rel": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/",
+            "fibo-sec-eq-eq": "https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/",
+            "fibo-sec-fund-civ": "https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/CollectiveInvestmentVehicles/",
+            "fibo-sec-sec-iss": "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/",
+            "lcc-3166-1": "https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/",
+            "lcc-cr": "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/",
+            "lcc-lr": "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/",
+            "sf-cu": "https://api.nzsf.io/custodian/",
+            "sf-pa": "https://api.nzsf.io/party/"}

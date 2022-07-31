@@ -1,20 +1,23 @@
 from pyspark.sql.functions import lit
+from pyspark.sql import dataframe
 import pendulum
 
 from sparkjobtest.util import session as sp
+from sparkjobtest.util import config
+from sparkjobtest.model import value
 
 ftype = "csv"
 
-def transform(df, params, args):
+def transform(df: dataframe.DataFrame, params: value.JobParams):
     lib_test = "dbutils: {} Spark: {}".format("dbutils" in locals(), "spark" in locals())
     return (df.withColumn("_loadtime", lit(pendulum.now("Europe/Paris")))
-              .withColumn("_params", lit(params))
-              .withColumn("_args", lit(str(args)))
+              .withColumn("_params", lit(params.ids))
+              .withColumn("_args", lit(str(params.args)))
               .withColumn("_libs", lit(lib_test)))
 
-def write(df):
+def write(df: dataframe.DataFrame):
     df.show()
-    df.write.format(sp.table_format()).mode("overwrite").saveAsTable("dataProduct_cbor.batch")
+    df.write.format(sp.table_format()).mode("append").saveAsTable(config.batch_table_fully_qualified)
     return True
 
 

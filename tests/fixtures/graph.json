@@ -1,0 +1,12 @@
+{
+    "@context": {
+        "@language": "en",
+        "@vocab": "https://nzsuperfund.co.nz/ontology/",
+        "lcc-lr": "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"
+    },
+    "@id": "https://nzsuperfund.co.nz/ontology/custodianPortfolio/zn1111",
+    "@type": "FundPortfolio",
+    "lcc-lr:hasTag": {
+        "@value": "zn1114"
+    }
+}

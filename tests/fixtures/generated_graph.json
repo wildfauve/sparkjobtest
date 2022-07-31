@@ -1,0 +1,496 @@
+{
+    "@context": {
+        "@language": "en",
+        "@vocab": "https://api.nzsuperfund.co.nz/custodian/",
+        "fibo-fbc-fi-fi": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/",
+        "fibo-fbc-pas-fpas": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/",
+        "fibo-fi-ip": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/",
+        "fibo-fnd-acc-4217": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/",
+        "fibo-fnd-acc-cur": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/",
+        "fibo-fnd-arr-arr": "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/",
+        "fibo-fnd-arr-rt": "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/",
+        "fibo-fnd-dt-fd": "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/",
+        "fibo-fnd-oac-own": "https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/",
+        "fibo-fnd-org-fm": "https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/",
+        "fibo-fnd-rel-rel": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/",
+        "fibo-sec-eq-eq": "https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/",
+        "fibo-sec-fund-civ": "https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/CollectiveInvestmentVehicles/",
+        "fibo-sec-sec-iss": "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/",
+        "lcc-3166-1": "https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/",
+        "lcc-cr": "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/",
+        "lcc-lr": "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/",
+        "sf-cu": "https://api.nzsf.io/custodian/",
+        "sf-pa": "https://api.nzsf.io/party/",
+        "skos": "http://www.w3.org/2004/02/skos/core#"
+    },
+    "@graph": [
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/NTIssueType/COMSTK",
+            "@type": "https://nzsuperfund.co.nz/ontology/NTIssueType/",
+            "lcc-lr:hasTag": {
+                "@value": "COMSTK"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/ISIN/AU0000030678",
+            "@type": "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ISIN",
+            "lcc-lr:hasTag": {
+                "@value": "AU0000030678"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/fce3ed06-27d8-47f3-8636-577eba60e025",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/AuditedHeldPositionChange",
+            "fibo-fi-ip:hasPriceDeterminationMethod": {
+                "@id": "https://nzsuperfund.co.nz/ontology/PRT/CustodianEquityValuationMethod"
+            },
+            "fibo-fnd-acc-cur:hasPrice": [
+                {
+                    "@id": "_:Nb9a9f85a203e4767acfab78622e69cc4"
+                },
+                {
+                    "@id": "_:N07d3008cff3c4f2ba9498ed236d8c80f"
+                }
+            ],
+            "fibo-sec-eq-eq:indicatesNumberOfShares": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "100.00000"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasNAVDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-22T00:00:00+00:00"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/isPositionValuationChangeFor": {
+                "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce"
+            }
+        },
+        {
+            "@id": "_:Nb9a9f85a203e4767acfab78622e69cc4",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInLocalCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1000.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            }
+        },
+        {
+            "@id": "_:N07d3008cff3c4f2ba9498ed236d8c80f",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInBaseCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1111.11111"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/ontology/ind/MoodyRating/NR",
+            "@type": "https://nzsuperfund.co.nz/ontology/MoodyRating",
+            "lcc-lr:hasTag": {
+                "@value": "NR"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/NTSecurityNumber/BYWR0T5",
+            "@type": "https://nzsuperfund.co.nz/ontology/NTSecurityNumber",
+            "lcc-lr:hasTag": {
+                "@value": "BYWR0T5"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/AUD/BYWR0T5",
+            "@type": "fibo-fbc-fi-fi:CommonShare",
+            "fibo-fnd-acc-cur:hasPrice": [
+                {
+                    "@id": "_:N7f48d88870854341b2cfd10c4014f96d"
+                },
+                {
+                    "@id": "_:Nbde5b94686bc4cff957a80fbbfc9eef1"
+                },
+                {
+                    "@id": "_:N283820b9718e4636a89395dc1586cf9f"
+                },
+                {
+                    "@id": "_:Nf7df47baa7614b34928e835d0002123a"
+                }
+            ],
+            "fibo-fnd-arr-rt:hasRatingScore": [
+                {
+                    "@id": "https://nzsuperfund.co.nz/ontology/ind/StandardAndPoorsRating/NR"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/ontology/ind/MoodyRating/NR"
+                }
+            ],
+            "fibo-fnd-rel-rel:isIssuedBy": {
+                "@id": "https://nzsuperfund.co.nz/custodian/issuer/e7fc83a8-24fd-4e68-a7a4-9425a844bc66"
+            },
+            "fibo-sec-sec-iss:hasFinancialInstrumentShortName": {
+                "@id": "_:N460e215d7cf349038d4179343edb0eb9"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasCountryOfRisk": {
+                "@id": "lcc-3166-1:AU"
+            },
+            "lcc-cr:isClassifiedBy": [
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/NTAssetClassificationSuperCategory/05"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/NTAssetClassificationSubCategory/05"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/NTIssueType/COMSTK"
+                }
+            ],
+            "lcc-cr:isIdentifiedBy": [
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/NTTicker/N000000000000000"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/SEDOL/BYWR0T5"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/ISIN/AU0000030678"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/NTSecurityNumber/BYWR0T5"
+                }
+            ]
+        },
+        {
+            "@id": "_:N460e215d7cf349038d4179343edb0eb9",
+            "lcc-lr:hasTag": {
+                "@value": "COLES GROUP LTD"
+            },
+            "lcc-lr:isMemberOf": {
+                "@id": "https://nzsuperfund.co.nz/ontology/NorthernTrustInstrumentIdentificationScheme"
+            }
+        },
+        {
+            "@id": "_:N7f48d88870854341b2cfd10c4014f96d",
+            "@type": "fibo-fi-ip:OfficialClosingPrice",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "10.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            },
+            "fibo-fnd-dt-fd:hasObservedDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-22T00:00:00+00:00"
+            }
+        },
+        {
+            "@id": "_:Nbde5b94686bc4cff957a80fbbfc9eef1",
+            "@type": "fibo-fi-ip:OfficialClosingPrice",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "11.11111"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            },
+            "fibo-fnd-dt-fd:hasObservedDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-22T00:00:00+00:00"
+            }
+        },
+        {
+            "@id": "_:N283820b9718e4636a89395dc1586cf9f",
+            "@type": "fibo-fi-ip:OfficialClosingPrice",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "20.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            },
+            "fibo-fnd-dt-fd:hasObservedDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-23T00:00:00+00:00"
+            }
+        },
+        {
+            "@id": "_:Nf7df47baa7614b34928e835d0002123a",
+            "@type": "fibo-fi-ip:OfficialClosingPrice",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "22.22222"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            },
+            "fibo-fnd-dt-fd:hasObservedDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-23T00:00:00+00:00"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce",
+            "@type": "fibo-fbc-pas-fpas:EquityPosition",
+            "fibo-fnd-arr-arr:isConstituentOf": {
+                "@id": "https://nzsuperfund.co.nz/custodian/fundPortfolio/ZN1114"
+            },
+            "fibo-fnd-oac-own:hasOwnedAsset": {
+                "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/AUD/BYWR0T5"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasCostValuation": {
+                "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/costValuation/e49cde1d-de03-4abf-84c0-f38a9cff166c"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasPositionValuation": [
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/cae65df3-bd8b-438a-802a-7f21bf7ed8e3"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/55baf02e-1723-4d46-a6f6-858e09e75e9e"
+                }
+            ],
+            "https://nzsuperfund.co.nz/ontology/PRT/hasPositionValuationChange": [
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/fce3ed06-27d8-47f3-8636-577eba60e025"
+                },
+                {
+                    "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/09c65775-9a12-4da5-bfb5-fd42b7ba5342"
+                }
+            ]
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/fundPortfolio/ZN1114",
+            "@type": "fibo-sec-fund-civ:FundPortfolio",
+            "fibo-fnd-arr-arr:hasConstituent": {
+                "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce"
+            },
+            "lcc-lr:hasTag": {
+                "@value": "ZN1114"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/ontology/ind/StandardAndPoorsRating/NR",
+            "@type": "https://nzsuperfund.co.nz/ontology/StandardAndPoorsRating",
+            "lcc-lr:hasTag": {
+                "@value": "NR"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/NTAssetClassificationSuperCategory/05",
+            "@type": "https://nzsuperfund.co.nz/ontology/CLS/NTAssetClassificationSuperCategory/",
+            "lcc-lr:hasTag": {
+                "@value": "Equities"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/costValuation/e49cde1d-de03-4abf-84c0-f38a9cff166c",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/AuditedCostValuation",
+            "https://nzsuperfund.co.nz/ontology/PRT/hasNAVDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-22T00:00:00+00:00"
+            },
+            "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecurityAssets/hasAcquisitionPricehasAcquisitionPrice": [
+                {
+                    "@id": "_:Na6f794398e874497a45dbc4a0657690d"
+                },
+                {
+                    "@id": "_:Nac3192f27ed44aa882860610f45f020e"
+                }
+            ]
+        },
+        {
+            "@id": "_:Na6f794398e874497a45dbc4a0657690d",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/CostValueInLocalCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1000.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            }
+        },
+        {
+            "@id": "_:Nac3192f27ed44aa882860610f45f020e",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/CostValueInBaseCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1111.11111"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/09c65775-9a12-4da5-bfb5-fd42b7ba5342",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/AuditedHeldPositionChange",
+            "fibo-fi-ip:hasPriceDeterminationMethod": {
+                "@id": "https://nzsuperfund.co.nz/ontology/PRT/CustodianEquityValuationMethod"
+            },
+            "fibo-fnd-acc-cur:hasPrice": [
+                {
+                    "@id": "_:Nabb4f5c7e90441cfae3544b5db8c1459"
+                },
+                {
+                    "@id": "_:N3c43bf6a2ff842d6815bb66cc0eb3be0"
+                }
+            ],
+            "fibo-sec-eq-eq:indicatesNumberOfShares": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "0.00000"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasNAVDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-23T00:00:00+00:00"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/isPositionValuationChangeFor": {
+                "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce"
+            }
+        },
+        {
+            "@id": "_:Nabb4f5c7e90441cfae3544b5db8c1459",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInLocalCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1000.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            }
+        },
+        {
+            "@id": "_:N3c43bf6a2ff842d6815bb66cc0eb3be0",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInBaseCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1111.11111"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/issuer/e7fc83a8-24fd-4e68-a7a4-9425a844bc66",
+            "@type": "fibo-fbc-fi-fi:Issuer",
+            "lcc-cr:isClassifiedBy": {
+                "@id": "https://nzsuperfund.co.nz/ontology/ind/gics/30101040"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/NTTicker/N000000000000000",
+            "@type": "https://nzsuperfund.co.nz/ontology/NTTicker",
+            "lcc-lr:hasTag": {
+                "@value": "N000000000000000"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/cae65df3-bd8b-438a-802a-7f21bf7ed8e3",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/AuditedHeldPosition",
+            "fibo-fi-ip:hasPriceDeterminationMethod": {
+                "@id": "https://nzsuperfund.co.nz/ontology/PRT/CustodianEquityValuationMethod"
+            },
+            "fibo-fnd-acc-cur:hasPrice": [
+                {
+                    "@id": "_:Nc1097b3fdb7545f4ba95f14f0cc02af9"
+                },
+                {
+                    "@id": "_:Na3cb811272224a79825a95b0760f5633"
+                }
+            ],
+            "fibo-sec-eq-eq:indicatesNumberOfShares": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "100.00000"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasNAVDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-22T00:00:00+00:00"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/isPositionValuationFor": {
+                "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce"
+            }
+        },
+        {
+            "@id": "_:Nc1097b3fdb7545f4ba95f14f0cc02af9",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInLocalCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1000.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            }
+        },
+        {
+            "@id": "_:Na3cb811272224a79825a95b0760f5633",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInBaseCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "1111.11111"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/instrument/identifiers/SEDOL/BYWR0T5",
+            "@type": "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentificationIndividuals/SEDOL",
+            "lcc-lr:hasTag": {
+                "@value": "BYWR0T5"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce/position/55baf02e-1723-4d46-a6f6-858e09e75e9e",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/AuditedHeldPosition",
+            "fibo-fi-ip:hasPriceDeterminationMethod": {
+                "@id": "https://nzsuperfund.co.nz/ontology/PRT/CustodianEquityValuationMethod"
+            },
+            "fibo-fnd-acc-cur:hasPrice": [
+                {
+                    "@id": "_:Nb397c60123f34697acbfda24aea38a87"
+                },
+                {
+                    "@id": "_:N6d5d33e3ce3a4fc986c210303bec83f0"
+                }
+            ],
+            "fibo-sec-eq-eq:indicatesNumberOfShares": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "100.00000"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/hasNAVDateTime": {
+                "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                "@value": "2022-02-23T00:00:00+00:00"
+            },
+            "https://nzsuperfund.co.nz/ontology/PRT/isPositionValuationFor": {
+                "@id": "https://nzsuperfund.co.nz/custodian/holding/abf115ac-2296-49f1-8884-d35210e35bce"
+            }
+        },
+        {
+            "@id": "_:Nb397c60123f34697acbfda24aea38a87",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInLocalCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "2000.00000"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:AUD"
+            }
+        },
+        {
+            "@id": "_:N6d5d33e3ce3a4fc986c210303bec83f0",
+            "@type": "https://nzsuperfund.co.nz/ontology/PRT/MarketValueInBaseCurrency",
+            "fibo-fnd-acc-cur:hasAmount": {
+                "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+                "@value": "2222.22222"
+            },
+            "fibo-fnd-acc-cur:hasCurrency": {
+                "@id": "fibo-fnd-acc-4217:NZD"
+            }
+        },
+        {
+            "@id": "https://nzsuperfund.co.nz/custodian/financialInstrument/NTAssetClassificationSubCategory/05",
+            "@type": "https://nzsuperfund.co.nz/ontology/CLS/NTAssetClassificationSubCategory/",
+            "lcc-lr:hasTag": {
+                "@value": "Common Stock"
+            }
+        }
+    ]
+}
