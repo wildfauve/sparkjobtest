@@ -1,10 +1,9 @@
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType
 from delta.tables import *
-
 import pendulum
 
 from sparkjobtest.util import session as sp
-from sparkjobtest.util import config
+from sparkjobtest.util import config, monad, error
 
 db = "dataProduct_cbor"
 tablename = "job_manifest"
@@ -18,11 +17,12 @@ schema = StructType([
 ])
 
 
+@monad.monadic_try(error_cls=error.JobError)
 def add_state(uuid: str, loc: str, state: str) -> bool:
     # tbl = create_table_if_not_exist(session().createDataFrame([], schema))
     df = create_df(uuid, loc, state)
     upsert(df)
-    return True
+    return df
 
 def create_df(uuid, loc, state):
     return session().createDataFrame([(uuid, loc, state, pendulum.now().to_iso8601_string())], schema)

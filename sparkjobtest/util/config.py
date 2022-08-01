@@ -1,3 +1,5 @@
+JOB_URN_BASE = "urn:sparkjob:cborBuilder"
+
 dbfs = "/dbfs"
 database_name = "dataProduct_cbor"
 batch_table = "batch"

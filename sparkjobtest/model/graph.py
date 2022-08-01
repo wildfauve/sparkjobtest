@@ -7,31 +7,41 @@ from rdflib import Namespace, Graph, Literal, RDF
 from pymonad.tools import curry
 
 from sparkjobtest.util import session as sp
-from sparkjobtest.util import config, fn
+from sparkjobtest.util import config, fn, env, monad, error
 from sparkjobtest.model import value, cbor_schema
 from sparkjobtest.ontology import rdf_prefix as P
 from sparkjobtest.ontology import bindings
 
+@monad.monadic_try(error_cls=error.JobError)
+def read_graph(location):
+    return init_graph(location)
+
+@monad.monadic_try(error_cls=error.JobError)
+def build_cbor_df(g: Graph) -> dataframe.DataFrame:
+    rows = [build_portfolio_constituent(g, portfolio_triple, constituent_triple) for portfolio_triple in portfolios(g)
+            for constituent_triple in constituents(g, portfolio_triple)]
+    return session().createDataFrame(rows, cbor_schema.schema)
+
+
+@monad.monadic_try(error_cls=error.JobError)
 def transform(df: dataframe.DataFrame, params: value.JobParams):
-    lib_test = "dbutils: {} Spark: {}".format("dbutils" in locals(), "spark" in locals())
-    return (df.withColumn("_loadtime", lit(pendulum.now("Europe/Paris")))
-            .withColumn("_params", lit(params.ids))
-            .withColumn("_args", lit(str(params.args)))
-            .withColumn("_libs", lit(lib_test)))
+    return df
+    # lib_test = "dbutils: {} Spark: {}".format("dbutils" in locals(), "spark" in locals())
+    # return (df.withColumn("_loadtime", lit(pendulum.now("Europe/Paris")))
+    #         .withColumn("_params", lit(params.ids))
+    #         .withColumn("_args", lit(str(params.args)))
+    #         .withColumn("_libs", lit(lib_test))
+    #         .withColumn("_env", lit(env.Env.env)))
 
-
+@monad.monadic_try(error_cls=error.JobError)
 def write(df: dataframe.DataFrame):
     df.show()
     df.write.format(sp.table_format()).mode("append").saveAsTable(config.graph_table_fully_qualified)
     return True
 
-
-def read_graph(location):
-    g = init_graph(location)
-    rows = [build_portfolio_constituent(g, portfolio_triple, constituent_triple) for portfolio_triple in portfolios(g)
-            for constituent_triple in constituents(g, portfolio_triple)]
-    return session().createDataFrame(rows, cbor_schema.schema)
-
+#
+# Private Functions
+#
 
 def build_portfolio_constituent(g, portfolio: Tuple, constituent: Tuple):
     s, _, o = portfolio
@@ -65,8 +75,9 @@ def constituents(g, portfolio_triple) -> List:
     return g.triples((portfolio_triple[0], P.fibo_fnd_arr_arr.hasConstituent, None))
 
 #
-# Helpers
+# Graph Helpers
 #
+
 @curry(2)
 def cond_predicate(term, triple: Tuple) -> bool:
     return triple[1] == term

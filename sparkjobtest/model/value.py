@@ -1,6 +1,9 @@
-from typing import Dict
+from typing import Dict, Optional, Any
 from dataclasses import dataclass
 from pyspark.sql import dataframe
+from rdflib import Graph
+
+from sparkjobtest.util import tracer
 
 @dataclass
 class DataClassAbstract:
@@ -14,12 +17,14 @@ class JobParams(DataClassAbstract):
     ids: str
     args: str
 
-
 @dataclass
 class JobState(DataClassAbstract):
     uuid: str
+    tracer: tracer.Tracer
     params: JobParams
-    graph_df: dataframe.DataFrame = None
-    manifest_df: dataframe.DataFrame = None
+    graph: Graph = None
+    df: Optional[dataframe.DataFrame] = None
+    manifest_df: Optional[dataframe.DataFrame] = None
+    error: Optional[Any] = None
 
 
