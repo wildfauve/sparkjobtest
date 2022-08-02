@@ -1,18 +1,19 @@
 import argparse
 import sys
-from pymonad.tools import curry
-from pyspark.sql import dataframe
 from uuid import uuid4
 
 from sparkjobtest.model import manifest, graph, value
 from sparkjobtest.util import session, monad, config, tracer, logger, env
 
-loc = "{}/FileStore/cbor/batch/graph.json".format(config.dbfs)
+def job(args=None) -> monad.EitherMonad:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--batches', nargs='+', required=False)
 
-def job(ids=None, location=None) -> monad.EitherMonad:
+    parsed_args = parser.parse_args(args)
+
     session_builder()
 
-    result = (build_value(location, ids, ",".join(sys.argv))
+    result = (build_value(parsed_args)
               >> start_manifest
               >> read_graph
               >> build_cbor
@@ -26,35 +27,31 @@ def job(ids=None, location=None) -> monad.EitherMonad:
                ctx={},
                tracer=result.lift().tracer)
 
-
     return result
 
 
-def build_value(location, ids, args) -> monad.EitherMonad[value.JobState]:
-    param_ids = ids if ids else "no_params"
+def build_value(args) -> monad.EitherMonad[value.JobState]:
     job_id = str(uuid4())
     trace = tracer.Tracer(env=env.Env.env, job_id=job_id)
 
     logger.log(level='info',
                msg='Job Start',
-               ctx={'ids': param_ids, 'args': args},
+               ctx={'jobArguments': str(args)},
                tracer=trace)
 
     return monad.Right(value.JobState(uuid=job_id,
                                       tracer=trace,
-                                      params=value.JobParams(file_location=location if location else loc,
-                                                             ids=param_ids,
-                                                             args=args)))
+                                      params=value.JobParams(args=args)))
 
 def start_manifest(job_state: value.JobState) -> monad.EitherMonad[value.JobParams]:
-    result = manifest.add_state(uuid=job_state.uuid, loc=job_state.params.file_location, state="initiated")
+    result = manifest.add_state(uuid=job_state.uuid, loc=graph_location(job_state.params), state="initiated")
     if result.is_right():
         return monad.Right(job_state)
     return monad.Left(job_state.replace('error', result.error()))
 
 
 def read_graph(job_state: value.JobState) -> monad.EitherMonad[value.JobParams]:
-    result = graph.read_graph(job_state.params.file_location)
+    result = graph.read_graph(graph_location(job_state.params))
     if result.is_right():
         return monad.Right(job_state.replace('graph', result.value))
     return monad.Left(job_state.replace('error', result.error()))
@@ -81,10 +78,16 @@ def write(job_state: value.JobState) -> monad.EitherMonad[value.JobParams]:
     return monad.Left(job_state.replace('error', result.error()))
 
 def complete_manifest(job_state: value.JobState) -> monad.EitherMonad[value.JobParams]:
-    result = manifest.add_state(uuid=job_state.uuid, loc=job_state.params.file_location, state="complete")
+    result = manifest.add_state(uuid=job_state.uuid, loc=graph_location(job_state.params), state="complete")
     if result.is_right():
         return monad.Right(job_state)
     return monad.Left(job_state.replace('error', result.error()))
+
+#
+# Helpers
+#
+def graph_location(params: value.JobParams) -> str:
+    return "{}/{}".format(config.batch_source_folder, params.args.batches[0])
 
 def session_builder():
     session.build(spark_session=None, table_format="delta")

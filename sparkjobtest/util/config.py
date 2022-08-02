@@ -1,10 +1,20 @@
 JOB_URN_BASE = "urn:sparkjob:cborBuilder"
 
-dbfs = "/dbfs"
+
+#
+# DB and Tables
+#
 database_name = "dataProduct_cbor"
-batch_table = "batch"
-graph_table = "graph"
+cbor_table = "cbor"
 manifest_table = "jobManifest"
-batch_table_fully_qualified = "{}.{}".format(database_name, batch_table)
-graph_table_fully_qualified = "{}.{}".format(database_name, graph_table)
+cbor_table_fully_qualified = "{}.{}".format(database_name, cbor_table)
 manifest_table_fully_qualified = "{}.{}".format(database_name, manifest_table)
+
+
+#
+# Batch Config
+#
+dbfs = "/dbfs"
+batch_source_folder = "{}/FileStore/cbor/batch".format(dbfs)
+
+

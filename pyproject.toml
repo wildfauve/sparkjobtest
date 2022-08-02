@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sparkjobtest"
-version = "0.1.15"
+version = "0.1.17"
 description = ""
 authors = ["Col Perks <wild.fauve@gmail.com>"]
 
@@ -23,6 +23,7 @@ pino = "^0.6.0"
 pytest = "^5.2"
 pdbpp = "^0.10.3"
 pytest-env = "^0.6.2"
+pytest-mock = "^3.8.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

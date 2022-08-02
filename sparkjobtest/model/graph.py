@@ -36,7 +36,7 @@ def transform(df: dataframe.DataFrame, params: value.JobParams):
 @monad.monadic_try(error_cls=error.JobError)
 def write(df: dataframe.DataFrame):
     df.show()
-    df.write.format(sp.table_format()).mode("append").saveAsTable(config.graph_table_fully_qualified)
+    df.write.format(sp.table_format()).mode("append").saveAsTable(config.cbor_table_fully_qualified)
     return True
 
 #

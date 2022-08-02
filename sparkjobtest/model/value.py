@@ -13,8 +13,6 @@ class DataClassAbstract:
 
 @dataclass
 class JobParams(DataClassAbstract):
-    file_location: str
-    ids: str
     args: str
 
 @dataclass

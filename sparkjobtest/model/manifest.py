@@ -21,6 +21,7 @@ schema = StructType([
 def add_state(uuid: str, loc: str, state: str) -> bool:
     # tbl = create_table_if_not_exist(session().createDataFrame([], schema))
     df = create_df(uuid, loc, state)
+    df.show()
     upsert(df)
     return df
 
